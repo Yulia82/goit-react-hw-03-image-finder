@@ -1,4 +1,5 @@
 import styles from "./Button.module.css";
+import PropTypes from "prop-types";
 
 function LoadMoreBtn({ onLoadMore }) {
   return (
@@ -9,3 +10,7 @@ function LoadMoreBtn({ onLoadMore }) {
 }
 
 export default LoadMoreBtn;
+
+LoadMoreBtn.propTypes = {
+  onLoadMore: PropTypes.func.isRequired,
+};

@@ -23,18 +23,17 @@ class App extends Component {
   };
 
   render() {
+    const { nameImg, showModal } = this.state;
+
     return (
       <div className={styles.App}>
         <Searchbar onSubmit={this.onSubmit} />
-        <ImageGalleryView
-          nameImage={this.state.nameImg}
-          controlModal={this.openModal}
-        />
+        <ImageGalleryView nameImage={nameImg} controlModal={this.openModal} />
         {this.state.showModal && (
           <Modal
             onClose={this.closeModal}
-            src={this.state.showModal.src}
-            alt={this.state.showModal.alt}
+            src={showModal.src}
+            alt={showModal.alt}
           />
         )}
       </div>

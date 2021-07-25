@@ -1,4 +1,5 @@
 import styles from "./ImageGalleryItem.module.css";
+import PropTypes from "prop-types";
 
 function ImageGalleryItem({ src, alt, activeImage }) {
   return (
@@ -14,3 +15,9 @@ function ImageGalleryItem({ src, alt, activeImage }) {
 }
 
 export default ImageGalleryItem;
+
+ImageGalleryItem.propTypes = {
+  src: PropTypes.string.isRequired,
+  alt: PropTypes.string.isRequired,
+  activeImage: PropTypes.func.isRequired,
+};

@@ -1,5 +1,7 @@
 import { Component } from "react";
+import PropTypes from "prop-types";
 import ImageGallery from "../ImageGallery";
+import styles from "./ImageGalleryView.module.css";
 import LoadMoreBtn from "../Button";
 import Loadmore from "../Loader";
 import ImagesApi from "../utils/getImages-api";
@@ -22,13 +24,9 @@ class ImageGalleryView extends Component {
   };
 
   componentDidUpdate(prevProps, prevState) {
-    console.log("prevProps", prevProps);
     if (prevProps.nameImage !== this.props.nameImage) {
       this.setState({ status: Status.PENDING });
-      // console.log('prevProps.nameImage', prevProps.nameImage);
-      // console.log('next-nameImage',this.props.nameImage);
 
-      // const getImages = new ImagesApi(this.props.nameImage);
       galleryImages.query = this.props.nameImage;
       galleryImages.resetPage();
 
@@ -66,7 +64,7 @@ class ImageGalleryView extends Component {
     const { images, error, status } = this.state;
 
     if (status === "idle") {
-      return <p>Введите название картинки/фото</p>;
+      return <p className={styles.Text}>Введите название картинки/фото</p>;
     }
 
     if (status === "pending") {
@@ -91,5 +89,10 @@ class ImageGalleryView extends Component {
     }
   }
 }
+
+ImageGalleryView.propTypes = {
+  nameImage: PropTypes.string.isRequired,
+  controlModal: PropTypes.func.isRequired,
+};
 
 export default ImageGalleryView;

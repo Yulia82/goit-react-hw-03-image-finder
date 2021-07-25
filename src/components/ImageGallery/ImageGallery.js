@@ -1,5 +1,6 @@
 import ImageGalleryItem from "../ImageGalleryItem";
 import styles from "./ImageGallery.module.css";
+import PropTypes from "prop-types";
 
 function ImageGallery({ images, activeImage }) {
   return (
@@ -19,4 +20,8 @@ function ImageGallery({ images, activeImage }) {
 }
 
 export default ImageGallery;
-// { id, webformatURL, largeImageURL}
+
+ImageGallery.propTypes = {
+  images: PropTypes.arrayOf(PropTypes.object).isRequired,
+  activeImage: PropTypes.func,
+};
