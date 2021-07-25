@@ -1,6 +1,7 @@
 import { Component } from "react";
 import ImageGallery from "../ImageGallery";
 import LoadMoreBtn from "../Button";
+import Loadmore from "../Loader";
 import ImagesApi from "../utils/getImages-api";
 import { scroll } from "../utils/scroll";
 
@@ -23,7 +24,7 @@ class ImageGalleryView extends Component {
   componentDidUpdate(prevProps, prevState) {
     console.log("prevProps", prevProps);
     if (prevProps.nameImage !== this.props.nameImage) {
-      // this.setState({ status: Status.PENDING })
+      this.setState({ status: Status.PENDING });
       // console.log('prevProps.nameImage', prevProps.nameImage);
       // console.log('next-nameImage',this.props.nameImage);
 
@@ -57,6 +58,10 @@ class ImageGalleryView extends Component {
       .catch(error => this.setState({ error, status: Status.REJECTED }));
   };
 
+  activeImage = (src, alt) => {
+    this.props.controlModal(src, alt);
+  };
+
   render() {
     const { images, error, status } = this.state;
 
@@ -64,9 +69,9 @@ class ImageGalleryView extends Component {
       return <p>Введите название картинки/фото</p>;
     }
 
-    // if (status === 'pending') {
-    //     return 'Введите название картинки/фото'ж
-    // }
+    if (status === "pending") {
+      return <Loadmore />;
+    }
 
     if (status === "rejected") {
       return <p>{error.message}</p>;
@@ -78,7 +83,7 @@ class ImageGalleryView extends Component {
       } else {
         return (
           <>
-            <ImageGallery images={images} />
+            <ImageGallery images={images} activeImage={this.activeImage} />
             <LoadMoreBtn onLoadMore={this.loadMore} />
           </>
         );

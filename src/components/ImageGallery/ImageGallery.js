@@ -1,7 +1,7 @@
 import ImageGalleryItem from "../ImageGalleryItem";
 import styles from "./ImageGallery.module.css";
 
-function ImageGallery({ images }) {
+function ImageGallery({ images, activeImage }) {
   return (
     <ul className={styles.ImageGallery}>
       {images.map(image => {
@@ -9,7 +9,8 @@ function ImageGallery({ images }) {
           <ImageGalleryItem
             key={image.id}
             src={image.webformatURL}
-            alt={image.webformatURL}
+            alt={image.tags}
+            activeImage={() => activeImage(image.largeImageURL, image.tags)}
           />
         );
       })}
