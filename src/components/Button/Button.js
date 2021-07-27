@@ -12,5 +12,5 @@ function LoadMoreBtn({ onLoadMore }) {
 export default LoadMoreBtn;
 
 LoadMoreBtn.propTypes = {
-  onLoadMore: PropTypes.func.isRequired,
+  onLoadMore: PropTypes.func,
 };

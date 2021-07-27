@@ -1,4 +1,5 @@
 import { Component } from "react";
+// import { ToastContainer } from 'react-toastify';
 import styles from "./App.module.css";
 import Searchbar from "../Searchbar";
 import ImageGalleryView from "../ImageGalleryView";
@@ -36,6 +37,8 @@ class App extends Component {
             alt={showModal.alt}
           />
         )}
+
+        {/* <ToastContainer/> */}
       </div>
     );
   }

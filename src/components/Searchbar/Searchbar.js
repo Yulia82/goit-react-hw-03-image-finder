@@ -1,4 +1,5 @@
 import { Component } from "react";
+// import { toast } from 'react-toastify'
 import styles from "./Searchbar.module.css";
 import PropTypes from "prop-types";
 
@@ -17,6 +18,16 @@ class Searchbar extends Component {
 
     if (this.state.value.trim() === "") {
       alert("ENTER NAME");
+      // toast.error("Wow so easy !", {
+      //   position: "top-center",
+      //   autoClose: 5000,
+      //   hideProgressBar: false,
+      //   closeOnClick: true,
+      //   pauseOnHover: true,
+      //   draggable: true,
+      //   progress: undefined,
+      // })
+
       return;
     }
 
